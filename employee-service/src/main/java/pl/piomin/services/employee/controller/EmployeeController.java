@@ -12,7 +12,7 @@ import pl.piomin.services.employee.repository.EmployeeRepository;
 import javax.inject.Inject;
 import java.util.List;
 
-@Controller("/employee")
+@Controller("/employees")
 public class EmployeeController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
