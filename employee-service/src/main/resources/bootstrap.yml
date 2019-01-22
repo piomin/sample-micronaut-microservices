@@ -1,0 +1,11 @@
+micronaut:
+  application:
+    name: employee-service
+  config-client:
+    enabled: true
+
+consul:
+  client:
+    defaultZone: "192.168.99.100:8500"
+    config:
+      format: YAML

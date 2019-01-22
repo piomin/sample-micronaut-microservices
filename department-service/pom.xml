@@ -112,8 +112,14 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                    <verbose>true</verbose>
+                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                    <dateFormat>MM-dd-yyyy '@' HH:mm:ss Z</dateFormat>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>src/main/resources/git.properties</generateGitPropertiesFilename>
+                    <failOnNoGitDirectory>true</failOnNoGitDirectory>
                 </configuration>
+
             </plugin>
             <plugin>
                 <groupId>com.rodiontsev.maven.plugins</groupId>
@@ -135,15 +141,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <includes>
-                        <include>**/build-info.properties</include>
-                    </includes>
-                </configuration>
             </plugin>
         </plugins>
         <pluginManagement>
