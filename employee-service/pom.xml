@@ -115,7 +115,7 @@
 				<artifactId>build-info-maven-plugin</artifactId>
 				<version>1.2</version>
 				<configuration>
-					<filename>build-info.properties</filename>
+					<filename>classes/META-INF/build-info.properties</filename>
 					<projectProperties>
 						<projectProperty>project.groupId</projectProperty>
 						<projectProperty>project.artifactId</projectProperty>
