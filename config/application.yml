@@ -1,0 +1,16 @@
+micronaut:
+  server:
+    port: -1
+endpoints:
+  info:
+    enabled: true
+    sensitive: false
+consul:
+  client:
+    registration:
+      enabled: true
+tracing:
+  zipkin:
+    enabled: true
+    http:
+      url: http://192.168.99.100:9411

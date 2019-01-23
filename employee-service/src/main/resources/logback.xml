@@ -11,4 +11,5 @@
     </root>
 
     <logger name="io.micronaut.context" level="INFO" />
+
 </configuration>

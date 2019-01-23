@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 
 import pl.piomin.services.department.model.Department;
 
+import javax.inject.Singleton;
+
+@Singleton
 public class DepartmentRepository {
 
 	private List<Department> departments = new ArrayList<>();

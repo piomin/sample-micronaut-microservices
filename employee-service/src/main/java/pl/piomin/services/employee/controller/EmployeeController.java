@@ -4,6 +4,9 @@ import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.tracing.annotation.ContinueSpan;
+import io.micronaut.tracing.annotation.NewSpan;
+import io.micronaut.tracing.annotation.SpanTag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.piomin.services.employee.model.Employee;
@@ -34,19 +37,20 @@ public class EmployeeController {
 	
 	@Get
 	public List<Employee> findAll() {
-		LOGGER.info("Employee find");
+		LOGGER.info("Employees find");
 		return repository.findAll();
 	}
 	
 	@Get("/department/{departmentId}")
-	public List<Employee> findByDepartment(Long departmentId) {
-		LOGGER.info("Employee find: departmentId={}", departmentId);
+	@ContinueSpan
+	public List<Employee> findByDepartment(@SpanTag("departmentId") Long departmentId) {
+		LOGGER.info("Employees find: departmentId={}", departmentId);
 		return repository.findByDepartment(departmentId);
 	}
 	
 	@Get("/organization/{organizationId}")
 	public List<Employee> findByOrganization(Long organizationId) {
-		LOGGER.info("Employee find: organizationId={}", organizationId);
+		LOGGER.info("Employees find: organizationId={}", organizationId);
 		return repository.findByOrganization(organizationId);
 	}
 	

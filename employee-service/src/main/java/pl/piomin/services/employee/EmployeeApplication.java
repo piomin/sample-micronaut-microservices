@@ -2,10 +2,10 @@ package pl.piomin.services.employee;
 
 import io.micronaut.runtime.Micronaut;
 
-public class Application {
+public class EmployeeApplication {
 
     public static void main(String[] args) {
-        Micronaut.run(Application.class);
+        Micronaut.run(EmployeeApplication.class);
     }
 
 }

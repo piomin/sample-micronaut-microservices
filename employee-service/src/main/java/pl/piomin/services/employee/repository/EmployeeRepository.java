@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 
 import pl.piomin.services.employee.model.Employee;
 
+import javax.inject.Singleton;
+
+@Singleton
 public class EmployeeRepository {
 
 	private List<Employee> employees = new ArrayList<>();
