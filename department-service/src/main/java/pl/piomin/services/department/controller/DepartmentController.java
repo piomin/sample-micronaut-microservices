@@ -4,6 +4,8 @@ import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.tracing.annotation.ContinueSpan;
+import io.micronaut.tracing.annotation.SpanTag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.piomin.services.department.client.EmployeeClient;
@@ -42,13 +44,15 @@ public class DepartmentController {
 	}
 	
 	@Get("/organization/{organizationId}")
-	public List<Department> findByOrganization(Long organizationId) {
+	@ContinueSpan
+	public List<Department> findByOrganization(@SpanTag("organizationId") Long organizationId) {
 		LOGGER.info("Department find: organizationId={}", organizationId);
 		return repository.findByOrganization(organizationId);
 	}
 	
 	@Get("/organization/{organizationId}/with-employees")
-	public List<Department> findByOrganizationWithEmployees(Long organizationId) {
+	@ContinueSpan
+	public List<Department> findByOrganizationWithEmployees(@SpanTag("organizationId") Long organizationId) {
 		LOGGER.info("Department find: organizationId={}", organizationId);
 		List<Department> departments = repository.findByOrganization(organizationId);
 		departments.forEach(d -> d.setEmployees(employeeClient.findByDepartment(d.getId())));

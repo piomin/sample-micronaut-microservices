@@ -18,40 +18,41 @@ import java.util.List;
 @Controller("/employees")
 public class EmployeeController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
-	
-	@Inject
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
+
+    @Inject
     EmployeeRepository repository;
-	
-	@Post
-	public Employee add(@Body Employee employee) {
-		LOGGER.info("Employee add: {}", employee);
-		return repository.add(employee);
-	}
-	
-	@Get("/{id}")
-	public Employee findById(Long id) {
-		LOGGER.info("Employee find: id={}", id);
-		return repository.findById(id);
-	}
-	
-	@Get
-	public List<Employee> findAll() {
-		LOGGER.info("Employees find");
-		return repository.findAll();
-	}
-	
-	@Get("/department/{departmentId}")
-	@ContinueSpan
-	public List<Employee> findByDepartment(@SpanTag("departmentId") Long departmentId) {
-		LOGGER.info("Employees find: departmentId={}", departmentId);
-		return repository.findByDepartment(departmentId);
-	}
-	
-	@Get("/organization/{organizationId}")
-	public List<Employee> findByOrganization(Long organizationId) {
-		LOGGER.info("Employees find: organizationId={}", organizationId);
-		return repository.findByOrganization(organizationId);
-	}
-	
+
+    @Post
+    public Employee add(@Body Employee employee) {
+        LOGGER.info("Employee add: {}", employee);
+        return repository.add(employee);
+    }
+
+    @Get("/{id}")
+    public Employee findById(Long id) {
+        LOGGER.info("Employee find: id={}", id);
+        return repository.findById(id);
+    }
+
+    @Get
+    public List<Employee> findAll() {
+        LOGGER.info("Employees find");
+        return repository.findAll();
+    }
+
+    @Get("/department/{departmentId}")
+    @ContinueSpan
+    public List<Employee> findByDepartment(@SpanTag("departmentId") Long departmentId) {
+        LOGGER.info("Employees find: departmentId={}", departmentId);
+        return repository.findByDepartment(departmentId);
+    }
+
+    @Get("/organization/{organizationId}")
+    @ContinueSpan
+    public List<Employee> findByOrganization(@SpanTag("organizationId") Long organizationId) {
+        LOGGER.info("Employees find: organizationId={}", organizationId);
+        return repository.findByOrganization(organizationId);
+    }
+
 }
