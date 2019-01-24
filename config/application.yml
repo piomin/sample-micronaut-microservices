@@ -1,6 +1,11 @@
 micronaut:
   server:
     port: -1
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
 endpoints:
   info:
     enabled: true
