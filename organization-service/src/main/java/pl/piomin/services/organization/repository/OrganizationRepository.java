@@ -6,6 +6,9 @@ import java.util.Optional;
 
 import pl.piomin.services.organization.model.Organization;
 
+import javax.inject.Singleton;
+
+@Singleton
 public class OrganizationRepository {
 
 	private List<Organization> organizations = new ArrayList<>();

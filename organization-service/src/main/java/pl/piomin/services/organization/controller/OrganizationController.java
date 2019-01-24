@@ -14,7 +14,7 @@ import pl.piomin.services.organization.repository.OrganizationRepository;
 import javax.inject.Inject;
 import java.util.List;
 
-@Controller("/organization")
+@Controller("/organizations")
 public class OrganizationController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationController.class);
