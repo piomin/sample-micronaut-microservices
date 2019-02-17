@@ -1,4 +1,4 @@
-package pl.piomin.services.department;
+package pl.piomin.services.department
 
 import io.micronaut.runtime.Micronaut;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;

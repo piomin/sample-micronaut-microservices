@@ -4,8 +4,8 @@ micronaut:
   config-client:
     enabled: true
 
-consul:
-  client:
-    defaultZone: "192.168.99.100:8500"
+spring:
+  cloud:
     config:
-      format: YAML
+      enabled: true
+      uri: http://localhost:8888/
