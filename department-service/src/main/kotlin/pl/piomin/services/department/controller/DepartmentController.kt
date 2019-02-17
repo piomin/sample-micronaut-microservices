@@ -44,14 +44,14 @@ class DepartmentController {
 
     @Get("/organization/{organizationId}")
     @ContinueSpan
-    fun findByOrganization(@SpanTag("organizationId") organizationId: Long): List<Department> {
+    open fun findByOrganization(@SpanTag("organizationId") organizationId: Long): List<Department> {
         logger.info("Department find: organizationId={}", organizationId)
         return repository.findByOrganization(organizationId)
     }
 
     @Get("/organization/{organizationId}/with-employees")
     @ContinueSpan
-    fun findByOrganizationWithEmployees(@SpanTag("organizationId") organizationId: Long): List<Department> {
+    open fun findByOrganizationWithEmployees(@SpanTag("organizationId") organizationId: Long): List<Department> {
         logger.info("Department find: organizationId={}", organizationId)
         val departments = repository.findByOrganization(organizationId)
         departments.forEach { it.employees = employeeClient.findByDepartment(it.id) }
