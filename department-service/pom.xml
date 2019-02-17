@@ -227,6 +227,11 @@
                                     <artifactId>micronaut-openapi</artifactId>
                                     <version>${micronaut.version}</version>
                                 </annotationProcessorPath>
+                                <annotationProcessorPath>
+                                    <groupId>io.micronaut</groupId>
+                                    <artifactId>micronaut-tracing</artifactId>
+                                    <version>${micronaut.version}</version>
+                                </annotationProcessorPath>
                             </annotationProcessorPaths>
                         </configuration>
                     </execution>
