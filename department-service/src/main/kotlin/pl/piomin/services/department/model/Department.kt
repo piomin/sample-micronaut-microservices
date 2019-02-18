@@ -1,7 +1,12 @@
 package pl.piomin.services.department.model;
 
-data class Department(var id: Long, var organizationId: Long, var name: String) {
+import javax.persistence.Entity
+import javax.persistence.Id
 
+@Entity
+data class Department(@Id var id: Long, var organizationId: Long, var name: String) {
+
+    @Transient
     var employees: MutableList<Employee> = mutableListOf()
 
 }

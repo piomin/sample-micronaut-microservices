@@ -72,6 +72,23 @@
             <artifactId>micronaut-inject-java</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.configuration</groupId>
+            <artifactId>micronaut-jdbc-hikari</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.configuration</groupId>
+            <artifactId>micronaut-hibernate-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.configuration</groupId>
+            <artifactId>micronaut-hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
         </dependency>
@@ -231,6 +248,16 @@
                                     <groupId>io.micronaut</groupId>
                                     <artifactId>micronaut-tracing</artifactId>
                                     <version>${micronaut.version}</version>
+                                </annotationProcessorPath>
+                                <annotationProcessorPath>
+                                    <groupId>javax.persistence</groupId>
+                                    <artifactId>javax.persistence-api</artifactId>
+                                    <version>2.2</version>
+                                </annotationProcessorPath>
+                                <annotationProcessorPath>
+                                    <groupId>io.micronaut.configuration</groupId>
+                                    <artifactId>micronaut-hibernate-jpa</artifactId>
+                                    <version>1.1.0.RC2</version>
                                 </annotationProcessorPath>
                             </annotationProcessorPaths>
                         </configuration>

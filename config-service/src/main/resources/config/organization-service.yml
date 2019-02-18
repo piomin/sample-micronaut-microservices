@@ -6,6 +6,12 @@ micronaut:
       swagger:
         paths: classpath:META-INF/swagger
         mapping: /swagger/**
+datasources:
+  default:
+    url: jdbc:postgresql://192.168.99.100:5432/micronaut?ssl=false
+    username: micronaut
+    password: 123456
+    driverClassName: org.postgresql.Driver
 endpoints:
   info:
     enabled: true
