@@ -1,21 +1,26 @@
 package pl.piomin.services.organization.repository
 
+import io.micronaut.configuration.hibernate.jpa.scope.CurrentSession
+import io.micronaut.spring.tx.annotation.Transactional
 import pl.piomin.services.organization.model.Organization
 
 import javax.inject.Singleton
+import javax.persistence.EntityManager
+import javax.persistence.PersistenceContext
 
 @Singleton
-class OrganizationRepository(private val organizations: MutableList<Organization> = mutableListOf()) {
+class OrganizationRepository(@param:CurrentSession @field:PersistenceContext val entityManager: EntityManager) {
 
-
+    @Transactional
     fun add(organization: Organization): Organization {
-        organization.id = (organizations.size + 1).toLong()
-        organizations.add(organization)
+        entityManager.persist(organization)
         return organization
     }
 
-    fun findById(id: Long): Organization? = organizations.firstOrNull { it.id == id }
+    @Transactional(readOnly = true)
+    fun findById(id: Long): Organization = entityManager.find(Organization::class.java, id)
 
-    fun findAll(): List<Organization> = organizations
+    @Transactional(readOnly = true)
+    fun findAll(): List<Organization> = entityManager.createQuery("SELECT o FROM Organization o").resultList as List<Organization>
 
 }

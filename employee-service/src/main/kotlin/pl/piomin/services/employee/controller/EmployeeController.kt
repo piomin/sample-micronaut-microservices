@@ -14,9 +14,7 @@ import pl.piomin.services.employee.repository.EmployeeRepository
 import javax.inject.Inject
 
 @Controller("/employees")
-class EmployeeController {
-
-    private val logger: Logger = LoggerFactory.getLogger(EmployeeController::class.java)
+class EmployeeController(private val logger: Logger = LoggerFactory.getLogger(EmployeeController::class.java)) {
 
     @Inject
     lateinit var repository: EmployeeRepository

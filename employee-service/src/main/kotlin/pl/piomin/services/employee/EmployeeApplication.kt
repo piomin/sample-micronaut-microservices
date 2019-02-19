@@ -13,8 +13,13 @@ import io.swagger.v3.oas.annotations.info.Info;
                 contact = Contact(url = "https://piotrminkowski.wordpress.com", name = "Piotr Mińkowski", email = "piotr.minkowski@gmail.com")
         )
 )
-class EmployeeApplication
+class EmployeeApplication {
 
-fun main(args: Array<String>) {
-    Micronaut.run(EmployeeApplication::class.java)
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            Micronaut.run(EmployeeApplication::class.java)
+        }
+    }
+
 }

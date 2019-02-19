@@ -10,10 +10,6 @@ import javax.persistence.PersistenceContext
 @Singleton
 open class DepartmentRepository(@param:CurrentSession @field:PersistenceContext val entityManager: EntityManager) {
 
-//    @Inject
-//    @CurrentSession
-//    private lateinit var entityManager: EntityManager
-
     @Transactional
     open fun add(department: Department): Department {
         entityManager.persist(department)

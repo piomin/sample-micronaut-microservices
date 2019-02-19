@@ -1,23 +1,35 @@
 package pl.piomin.services.employee.repository
 
+import io.micronaut.configuration.hibernate.jpa.scope.CurrentSession
+import io.micronaut.spring.tx.annotation.Transactional
 import pl.piomin.services.employee.model.Employee
 import javax.inject.Singleton
+import javax.persistence.EntityManager
+import javax.persistence.PersistenceContext
 
 @Singleton
-class EmployeeRepository(val employees: MutableList<Employee> = mutableListOf()) {
+open class EmployeeRepository(@param:CurrentSession @field:PersistenceContext val entityManager: EntityManager) {
 
-    fun add(employee: Employee): Employee {
-        employee.id = (employees.size + 1).toLong()
-        employees.add(employee)
+    @Transactional
+    open fun add(employee: Employee): Employee {
+        entityManager.persist(employee)
         return employee
     }
 
-    fun findById(id: Long): Employee? = employees.firstOrNull { it.id == id }
+    @Transactional(readOnly = true)
+    open fun findById(id: Long): Employee = entityManager.find(Employee::class.java, id)
 
-    fun findAll(): List<Employee> = employees
+    @Transactional(readOnly = true)
+    open fun findAll(): List<Employee> = entityManager.createQuery("SELECT e FROM Employee e").resultList as List<Employee>
 
-    fun findByDepartment(departmentId: Long): List<Employee> = employees.filter { it.departmentId == departmentId }
+    @Transactional(readOnly = true)
+    open fun findByDepartment(departmentId: Long): List<Employee> = entityManager.createQuery("SELECT e FROM Employee e WHERE e.departmentId = :depId")
+            .setParameter("depId", departmentId)
+            .resultList as List<Employee>
 
-    fun findByOrganization(organizationId: Long): List<Employee> = employees.filter { it.organizationId == organizationId }
+    @Transactional(readOnly = true)
+    open fun findByOrganization(organizationId: Long): List<Employee> = entityManager.createQuery("SELECT e FROM Employee e WHERE e.organizationId = :orgId")
+            .setParameter("orgId", organizationId)
+            .resultList as List<Employee>
 
 }
