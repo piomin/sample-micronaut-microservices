@@ -3,6 +3,5 @@ spring:
     name: config-service
   profiles:
     active: native
-
 server:
   port: 8888

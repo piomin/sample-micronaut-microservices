@@ -4,6 +4,7 @@ import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import pl.piomin.services.organization.client.DepartmentClient
 import pl.piomin.services.organization.client.EmployeeClient
@@ -13,9 +14,7 @@ import pl.piomin.services.organization.repository.OrganizationRepository
 import javax.inject.Inject
 
 @Controller("/organizations")
-class OrganizationController {
-
-    private val logger = LoggerFactory.getLogger(OrganizationController::class.java)
+class OrganizationController(private val logger: Logger = LoggerFactory.getLogger(OrganizationController::class.java)) {
 
     @Inject
     lateinit var repository: OrganizationRepository

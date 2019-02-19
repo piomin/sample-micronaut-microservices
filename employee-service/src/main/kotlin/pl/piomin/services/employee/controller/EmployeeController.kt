@@ -14,7 +14,7 @@ import pl.piomin.services.employee.repository.EmployeeRepository
 import javax.inject.Inject
 
 @Controller("/employees")
-class EmployeeController(private val logger: Logger = LoggerFactory.getLogger(EmployeeController::class.java)) {
+open class EmployeeController(private val logger: Logger = LoggerFactory.getLogger(EmployeeController::class.java)) {
 
     @Inject
     lateinit var repository: EmployeeRepository
@@ -39,14 +39,14 @@ class EmployeeController(private val logger: Logger = LoggerFactory.getLogger(Em
 
     @Get("/department/{departmentId}")
     @ContinueSpan
-    fun findByDepartment(@SpanTag("departmentId") departmentId: Long): List<Employee> {
+    open fun findByDepartment(@SpanTag("departmentId") departmentId: Long): List<Employee> {
         logger.info("Employees find: departmentId={}", departmentId)
         return repository.findByDepartment(departmentId)
     }
 
     @Get("/organization/{organizationId}")
     @ContinueSpan
-    fun findByOrganization(@SpanTag("organizationId") organizationId: Long): List<Employee> {
+    open fun findByOrganization(@SpanTag("organizationId") organizationId: Long): List<Employee> {
         logger.info("Employees find: organizationId={}", organizationId)
         return repository.findByOrganization(organizationId)
     }

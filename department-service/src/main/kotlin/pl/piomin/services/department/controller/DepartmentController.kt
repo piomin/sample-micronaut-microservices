@@ -15,9 +15,7 @@ import pl.piomin.services.department.repository.DepartmentRepository
 import javax.inject.Inject
 
 @Controller("/departments")
-open class DepartmentController {
-
-    private val logger: Logger = LoggerFactory.getLogger(DepartmentController::class.java)
+open class DepartmentController(private val logger: Logger = LoggerFactory.getLogger(DepartmentController::class.java)) {
 
     @Inject
     lateinit var repository: DepartmentRepository

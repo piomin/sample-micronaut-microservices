@@ -12,6 +12,15 @@ datasources:
     username: micronaut
     password: 123456
     driverClassName: org.postgresql.Driver
+jpa:
+  default:
+    packages-to-scan:
+      - 'pl.piomin.services.organization.model'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
 endpoints:
   info:
     enabled: true
