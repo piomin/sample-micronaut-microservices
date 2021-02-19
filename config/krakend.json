@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extra_config": {
+    "github_com/devopsfaith/krakend-opencensus": {
+      "sample_rate": 100,
+      "reporting_period": 1,
+      "exporters": {
+        "zipkin": {
+          "collector_url": "http://host.docker.internal:9411/api/v2/spans",
+          "service_name": "krakend"
+        }
+      }
+    }
+  },
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "output_encoding": "json",
+  "name": "Micronaut-Gateway",
+  "endpoints": [
+    {
+      "endpoint": "/department",
+      "method": "GET",
+      "output_encoding": "json",
+      "extra_config": {},
+      "backend": [
+        {
+          "url_pattern": "/departments",
+          "encoding": "json",
+          "sd": "dns",
+          "method": "GET",
+          "extra_config": {},
+          "host": [
+            "department-service.service.consul"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/employee",
+      "method": "GET",
+      "output_encoding": "json",
+      "extra_config": {},
+      "backend": [
+        {
+          "url_pattern": "/employees",
+          "encoding": "json",
+          "sd": "dns",
+          "method": "GET",
+          "extra_config": {},
+          "host": [
+            "employee-service.service.consul"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/organization",
+      "method": "GET",
+      "output_encoding": "json",
+      "extra_config": {},
+      "backend": [
+        {
+          "url_pattern": "/organizations",
+          "encoding": "json",
+          "sd": "dns",
+          "method": "GET",
+          "extra_config": {},
+          "host": [
+            "organization-service.service.consul"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    }
+  ]
+}

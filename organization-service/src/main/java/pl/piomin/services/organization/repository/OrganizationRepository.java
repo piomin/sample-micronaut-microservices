@@ -21,10 +21,7 @@ public class OrganizationRepository {
 	
 	public Organization findById(Long id) {
 		Optional<Organization> organization = organizations.stream().filter(a -> a.getId().equals(id)).findFirst();
-		if (organization.isPresent())
-			return organization.get();
-		else
-			return null;
+		return organization.orElse(null);
 	}
 	
 	public List<Organization> findAll() {

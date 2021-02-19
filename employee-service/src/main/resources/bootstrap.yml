@@ -6,6 +6,6 @@ micronaut:
 
 consul:
   client:
-    defaultZone: "192.168.99.100:8500"
+    defaultZone: "localhost:8500"
     config:
       format: YAML

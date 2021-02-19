@@ -22,10 +22,7 @@ public class EmployeeRepository {
 	
 	public Employee findById(Long id) {
 		Optional<Employee> employee = employees.stream().filter(a -> a.getId().equals(id)).findFirst();
-		if (employee.isPresent())
-			return employee.get();
-		else
-			return null;
+		return employee.orElse(null);
 	}
 	
 	public List<Employee> findAll() {
