@@ -6,7 +6,7 @@
       "reporting_period": 1,
       "exporters": {
         "zipkin": {
-          "collector_url": "http://host.docker.internal:9411/api/v2/spans",
+          "collector_url": "http://localhost:9411/api/v2/spans",
           "service_name": "krakend"
         }
       }
@@ -44,12 +44,9 @@
       "backend": [
         {
           "url_pattern": "/employees",
-          "encoding": "json",
           "sd": "dns",
-          "method": "GET",
-          "extra_config": {},
           "host": [
-            "employee-service.service.consul"
+            "employee-service.service.consul.srv"
           ],
           "disable_host_sanitize": true
         }

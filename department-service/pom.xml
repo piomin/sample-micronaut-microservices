@@ -7,7 +7,7 @@
 
     <properties>
         <exec.mainClass>pl.piomin.services.department.DepartmentApplication</exec.mainClass>
-        <micronaut.version>2.3.2</micronaut.version>
+        <micronaut.version>2.3.1</micronaut.version>
         <jdk.version>11</jdk.version>
     </properties>
 
@@ -169,6 +169,16 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>2.7.1</version>
+                <configuration>
+                    <to>
+                        <image>piomin/department-micronaut</image>
+                    </to>
+                </configuration>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
@@ -189,7 +199,7 @@
                                 <version>${micronaut.version}</version>
                             </path>
                             <path>
-                                <groupId>io.micronaut.configuration</groupId>
+                                <groupId>io.micronaut.openapi</groupId>
                                 <artifactId>micronaut-openapi</artifactId>
                                 <version>${micronaut.version}</version>
                             </path>
