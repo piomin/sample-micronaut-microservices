@@ -7,9 +7,14 @@
       "exporters": {
         "zipkin": {
           "collector_url": "http://localhost:9411/api/v2/spans",
-          "service_name": "krakend"
+          "service_name": "api-gateway"
         }
       }
+    },
+    "github_com/devopsfaith/krakend-metrics": {
+      "collection_time": "30s",
+      "proxy_disabled": false,
+      "listen_address": ":8090"
     }
   },
   "timeout": "3000ms",
@@ -18,17 +23,12 @@
   "name": "Micronaut-Gateway",
   "endpoints": [
     {
-      "endpoint": "/department",
+      "endpoint": "/department/{id}",
       "method": "GET",
-      "output_encoding": "json",
-      "extra_config": {},
       "backend": [
         {
-          "url_pattern": "/departments",
-          "encoding": "json",
+          "url_pattern": "/departments/{id}",
           "sd": "dns",
-          "method": "GET",
-          "extra_config": {},
           "host": [
             "department-service.service.consul"
           ],
@@ -37,16 +37,70 @@
       ]
     },
     {
-      "endpoint": "/employee",
+      "endpoint": "/department-with-employees/{organizationId}",
       "method": "GET",
-      "output_encoding": "json",
-      "extra_config": {},
+      "backend": [
+        {
+          "url_pattern": "/departments/organization/{organizationId}/with-employees",
+          "sd": "dns",
+          "host": [
+            "department-service.service.consul"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/department",
+      "method": "POST",
+      "backend": [
+        {
+          "url_pattern": "/departments",
+          "sd": "dns",
+          "host": [
+            "department-service.service.consul"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/employee/{id}",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/employees/{id}",
+          "sd": "dns",
+          "host": [
+            "employee-service.service.consul"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/employee",
+      "method": "POST",
       "backend": [
         {
           "url_pattern": "/employees",
           "sd": "dns",
           "host": [
-            "employee-service.service.consul.srv"
+            "employee-service.service.consul"
+          ],
+          "disable_host_sanitize": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/organization/{id}",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/organizations/{id}",
+          "sd": "dns",
+          "host": [
+            "organization-service.service.consul"
           ],
           "disable_host_sanitize": true
         }
@@ -54,16 +108,11 @@
     },
     {
       "endpoint": "/organization",
-      "method": "GET",
-      "output_encoding": "json",
-      "extra_config": {},
+      "method": "POST",
       "backend": [
         {
           "url_pattern": "/organizations",
-          "encoding": "json",
           "sd": "dns",
-          "method": "GET",
-          "extra_config": {},
           "host": [
             "organization-service.service.consul"
           ],
