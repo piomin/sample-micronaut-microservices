@@ -46,7 +46,8 @@
           "host": [
             "department-service.service.consul"
           ],
-          "disable_host_sanitize": true
+          "disable_host_sanitize": true,
+          "is_collection": true
         }
       ]
     },
