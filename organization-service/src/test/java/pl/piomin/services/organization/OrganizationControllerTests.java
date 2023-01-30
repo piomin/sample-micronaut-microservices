@@ -1,5 +1,6 @@
 package pl.piomin.services.organization;
 
+import io.micronaut.context.annotation.Property;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @MicronautTest
+@Property(name = "micronaut.config-client.enabled", value = "false")
 public class OrganizationControllerTests {
 
     @Inject
@@ -45,6 +47,8 @@ public class OrganizationControllerTests {
 
     @Test
     void findById() {
-
+        Organization organization = client.toBlocking().retrieve("/organizations/1", Organization.class);
+        assertNotNull(organization);
+        assertNotNull(organization.getId());
     }
 }
