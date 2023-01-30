@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @MicronautTest
 @Property(name = "micronaut.config-client.enabled", value = "false")
+@Property(name = "consul.client.registration.enabled", value = "false")
 public class EmployeeControllerTests {
 
     @Inject
