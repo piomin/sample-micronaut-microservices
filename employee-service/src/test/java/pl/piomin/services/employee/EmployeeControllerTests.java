@@ -1,5 +1,6 @@
 package pl.piomin.services.employee;
 
+import io.micronaut.context.annotation.Property;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @MicronautTest
+@Property(name = "micronaut.config-client.enabled", value = "false")
 public class EmployeeControllerTests {
 
     @Inject
