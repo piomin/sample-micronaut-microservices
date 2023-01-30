@@ -76,7 +76,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.16</version>
+            <version>1.18.24</version>
         </dependency>
         <dependency>
             <groupId>net.datafaker</groupId>
@@ -200,7 +200,7 @@
                             <path>
                                 <groupId>org.projectlombok</groupId>
                                 <artifactId>lombok</artifactId>
-                                <version>1.18.16</version>
+                                <version>1.18.24</version>
                             </path>
                         </annotationProcessorPaths>
                     </configuration>
@@ -223,7 +223,7 @@
                                     <path>
                                         <groupId>org.projectlombok</groupId>
                                         <artifactId>lombok</artifactId>
-                                        <version>1.18.16</version>
+                                        <version>1.18.24</version>
                                     </path>
                                 </annotationProcessorPaths>
                             </configuration>
