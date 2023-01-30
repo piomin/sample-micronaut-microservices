@@ -12,6 +12,7 @@
 
     <properties>
         <exec.mainClass>pl.piomin.services.department.DepartmentApplication</exec.mainClass>
+        <sonar.moduleKey>${artifactId}</sonar.moduleKey>
     </properties>
 
     <dependencyManagement>

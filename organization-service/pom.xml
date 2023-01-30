@@ -12,6 +12,7 @@
 
     <properties>
         <exec.mainClass>pl.piomin.services.organization.OrganizationApplication</exec.mainClass>
+        <sonar.moduleKey>${artifactId}</sonar.moduleKey>
     </properties>
 
     <dependencies>

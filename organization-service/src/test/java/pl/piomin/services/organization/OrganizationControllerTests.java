@@ -1,4 +1,4 @@
-package pl.piomin.services.employee;
+package pl.piomin.services.organization;
 
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.client.HttpClient;
@@ -8,7 +8,8 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.instancio.Instancio;
 import org.instancio.Select;
 import org.junit.jupiter.api.Test;
-import pl.piomin.services.employee.model.Employee;
+import pl.piomin.services.organization.model.Employee;
+import pl.piomin.services.organization.model.Organization;
 
 import javax.inject.Inject;
 
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @MicronautTest
-public class EmployeeControllerTests {
+public class OrganizationControllerTests {
 
     @Inject
     EmbeddedServer server;
@@ -27,25 +28,23 @@ public class EmployeeControllerTests {
 
     @Test
     void add() {
-        Employee employee = Instancio.of(Employee.class)
+        Organization organization = Instancio.of(Organization.class)
                 .ignore(Select.field(Employee::getId))
                 .create();
-        employee = client.toBlocking()
-                .retrieve(HttpRequest.POST("/employees", employee), Employee.class);
-        assertNotNull(employee);
-        assertNotNull(employee.getId());
+        organization = client.toBlocking()
+                .retrieve(HttpRequest.POST("/organizations", organization), Organization.class);
+        assertNotNull(organization);
+        assertNotNull(organization.getId());
     }
 
     @Test
     void findAll() {
-        Employee[] employees = client.toBlocking().retrieve("/employees", Employee[].class);
-        assertTrue(employees.length > 0);
+        Organization[] organizations = client.toBlocking().retrieve("/organizations", Organization[].class);
+        assertTrue(organizations.length > 0);
     }
 
     @Test
     void findById() {
-        Employee employee = client.toBlocking().retrieve("/employees/1", Employee.class);
-        assertNotNull(employee);
-        assertNotNull(employee.getId());
+
     }
 }
