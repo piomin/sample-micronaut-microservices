@@ -1,12 +1,11 @@
 package pl.piomin.services.organization.repository;
 
+import jakarta.inject.Singleton;
+import pl.piomin.services.organization.model.Organization;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import pl.piomin.services.organization.model.Organization;
-
-import javax.inject.Singleton;
 
 @Singleton
 public class OrganizationRepository {

@@ -12,7 +12,7 @@
 
     <properties>
         <exec.mainClass>pl.piomin.services.department.DepartmentApplication</exec.mainClass>
-        <sonar.moduleKey>${artifactId}</sonar.moduleKey>
+        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
     </properties>
 
     <dependencies>
@@ -26,10 +26,6 @@
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-inject</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micronaut</groupId>
             <artifactId>micronaut-runtime</artifactId>
         </dependency>
         <dependency>
@@ -37,31 +33,16 @@
             <artifactId>micronaut-management</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-tracing</artifactId>
+            <groupId>io.micronaut.tracing</groupId>
+            <artifactId>micronaut-tracing-zipkin</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.zipkin.brave</groupId>
-            <artifactId>brave-instrumentation-http</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.zipkin.reporter2</groupId>
-            <artifactId>zipkin-reporter</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.opentracing.brave</groupId>
-            <artifactId>brave-opentracing</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micronaut</groupId>
+            <groupId>io.micronaut.discovery</groupId>
             <artifactId>micronaut-discovery-client</artifactId>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-inject-java</artifactId>
-            <scope>provided</scope>
+            <artifactId>micronaut-inject</artifactId>
         </dependency>
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
@@ -70,13 +51,12 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.5</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.26</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.datafaker</groupId>
@@ -171,14 +151,13 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
                     <configuration>
-                        <source>${jdk.version}</source>
-                        <target>${jdk.version}</target>
-                        <compilerArgs>
-                            <arg>-parameters</arg>
-                        </compilerArgs>
-                        <annotationProcessorPaths>
+                        <annotationProcessorPaths combine.self="override">
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
                             <path>
                                 <groupId>io.micronaut</groupId>
                                 <artifactId>micronaut-inject-java</artifactId>
@@ -187,40 +166,44 @@
                             <path>
                                 <groupId>io.micronaut.openapi</groupId>
                                 <artifactId>micronaut-openapi</artifactId>
-                                <version>${micronaut.version}</version>
-                            </path>
-                            <path>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok</artifactId>
-                                <version>1.18.26</version>
+                                <version>${micronaut.openapi.version}</version>
                             </path>
                         </annotationProcessorPaths>
+                        <compilerArgs>
+                            <arg>-Amicronaut.processing.group=pl.piomin.services</arg>
+                            <arg>-Amicronaut.processing.module=department-service</arg>
+                        </compilerArgs>
                     </configuration>
-                    <executions>
-                        <execution>
-                            <id>test-compile</id>
-                            <goals>
-                                <goal>testCompile</goal>
-                            </goals>
-                            <configuration>
-                                <compilerArgs>
-                                    <arg>-parameters</arg>
-                                </compilerArgs>
-                                <annotationProcessorPaths>
-                                    <path>
-                                        <groupId>io.micronaut</groupId>
-                                        <artifactId>micronaut-inject-java</artifactId>
-                                        <version>${micronaut.version}</version>
-                                    </path>
-                                    <path>
-                                        <groupId>org.projectlombok</groupId>
-                                        <artifactId>lombok</artifactId>
-                                        <version>1.18.26</version>
-                                    </path>
-                                </annotationProcessorPaths>
-                            </configuration>
-                        </execution>
-                    </executions>
+<!--                    <executions>-->
+<!--                        <execution>-->
+<!--                            <id>test-compile</id>-->
+<!--                            <goals>-->
+<!--                                <goal>testCompile</goal>-->
+<!--                            </goals>-->
+<!--                            <configuration>-->
+<!--                                <compilerArgs>-->
+<!--                                    <arg>-parameters</arg>-->
+<!--                                </compilerArgs>-->
+<!--                                <annotationProcessorPaths>-->
+<!--                                    <path>-->
+<!--                                        <groupId>org.projectlombok</groupId>-->
+<!--                                        <artifactId>lombok</artifactId>-->
+<!--                                        <version>${lombok.version}</version>-->
+<!--                                    </path>-->
+<!--                                    <path>-->
+<!--                                        <groupId>io.micronaut</groupId>-->
+<!--                                        <artifactId>micronaut-inject-java</artifactId>-->
+<!--                                        <version>${micronaut.version}</version>-->
+<!--                                    </path>-->
+<!--                                    <path>-->
+<!--                                        <groupId>io.micronaut.openapi</groupId>-->
+<!--                                        <artifactId>micronaut-openapi</artifactId>-->
+<!--                                        <version>${micronaut.openapi.version}</version>-->
+<!--                                    </path>-->
+<!--                                </annotationProcessorPaths>-->
+<!--                            </configuration>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

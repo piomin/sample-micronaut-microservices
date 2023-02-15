@@ -4,6 +4,7 @@ import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.piomin.services.organization.client.DepartmentClient;
@@ -11,7 +12,6 @@ import pl.piomin.services.organization.client.EmployeeClient;
 import pl.piomin.services.organization.model.Organization;
 import pl.piomin.services.organization.repository.OrganizationRepository;
 
-import javax.inject.Inject;
 import java.util.List;
 
 @Controller("/organizations")
