@@ -5,14 +5,13 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.tracing.annotation.ContinueSpan;
-import io.micronaut.tracing.annotation.NewSpan;
 import io.micronaut.tracing.annotation.SpanTag;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.piomin.services.employee.model.Employee;
 import pl.piomin.services.employee.repository.EmployeeRepository;
 
-import javax.inject.Inject;
 import java.util.List;
 
 @Controller("/employees")

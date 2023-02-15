@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import jakarta.inject.Singleton;
 import pl.piomin.services.department.model.Department;
 
-import javax.inject.Singleton;
 
 @Singleton
 public class DepartmentRepository {
