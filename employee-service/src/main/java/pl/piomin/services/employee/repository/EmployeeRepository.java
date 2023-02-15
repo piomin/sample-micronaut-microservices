@@ -1,13 +1,12 @@
 package pl.piomin.services.employee.repository;
 
+import jakarta.inject.Singleton;
+import pl.piomin.services.employee.model.Employee;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import pl.piomin.services.employee.model.Employee;
-
-import javax.inject.Singleton;
 
 @Singleton
 public class EmployeeRepository {
