@@ -13,7 +13,7 @@
 
 	<properties>
 		<java.version>19</java.version>
-		<spring-cloud.version>2022.0.4</spring-cloud.version>
+		<spring-cloud.version>2022.0.5</spring-cloud.version>
 	</properties>
 	
 	<dependencyManagement>
