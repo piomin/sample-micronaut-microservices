@@ -1,5 +1,6 @@
 package pl.piomin.services.department.model;
 
+import io.micronaut.serde.annotation.Serdeable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor
+@Serdeable
 public class Employee {
 
 	private Long id;
