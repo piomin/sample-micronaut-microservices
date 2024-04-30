@@ -1,8 +1,11 @@
 package pl.piomin.services.organization.model;
 
+import io.micronaut.serde.annotation.Serdeable;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Serdeable
 public class Department {
 
 	private Long id;

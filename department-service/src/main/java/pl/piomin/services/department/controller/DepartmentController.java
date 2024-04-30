@@ -20,11 +20,14 @@ public class DepartmentController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 	
-	@Inject
 	DepartmentRepository repository;
-	@Inject
 	EmployeeClient employeeClient;
-	
+
+	public DepartmentController(DepartmentRepository repository, EmployeeClient employeeClient) {
+		this.repository = repository;
+		this.employeeClient = employeeClient;
+	}
+
 	@Post
 	public Department add(@Body Department department) {
 		LOGGER.info("Department add: {}", department);

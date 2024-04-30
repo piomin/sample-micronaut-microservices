@@ -1,5 +1,6 @@
 package pl.piomin.services.department.model;
 
+import io.micronaut.serde.annotation.Serdeable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @ToString
 @NoArgsConstructor
+@Serdeable
 public class Department {
 
 	private Long id;
