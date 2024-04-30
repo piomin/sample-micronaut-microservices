@@ -113,6 +113,17 @@
                             <artifactId>micronaut-openapi</artifactId>
                             <version>${micronaut.openapi.version}</version>
                         </path>
+                        <path>
+                            <groupId>io.micronaut.serde</groupId>
+                            <artifactId>micronaut-serde-processor</artifactId>
+                            <version>${micronaut.serialization.version}</version>
+                            <exclusions>
+                                <exclusion>
+                                    <groupId>io.micronaut</groupId>
+                                    <artifactId>micronaut-inject</artifactId>
+                                </exclusion>
+                            </exclusions>
+                        </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
                         <arg>-Amicronaut.processing.group=pl.piomin.services</arg>

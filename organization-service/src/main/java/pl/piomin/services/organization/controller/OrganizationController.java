@@ -4,7 +4,6 @@ import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
-import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.piomin.services.organization.client.DepartmentClient;
@@ -19,13 +18,16 @@ public class OrganizationController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationController.class);
 	
-	@Inject
 	OrganizationRepository repository;
-	@Inject
 	DepartmentClient departmentClient;
-	@Inject
 	EmployeeClient employeeClient;
-	
+
+	public OrganizationController(OrganizationRepository repository, DepartmentClient departmentClient, EmployeeClient employeeClient) {
+		this.repository = repository;
+		this.departmentClient = departmentClient;
+		this.employeeClient = employeeClient;
+	}
+
 	@Post
 	public Organization add(@Body Organization organization) {
 		LOGGER.info("Organization add: {}", organization);
@@ -46,7 +48,7 @@ public class OrganizationController {
 
 	@Get("/{id}/with-departments")
 	public Organization findByIdWithDepartments(Long id) {
-		LOGGER.info("Organization find: id={}", id);
+		LOGGER.info("Organization find with departments: id={}", id);
 		Organization organization = repository.findById(id);
 		organization.setDepartments(departmentClient.findByOrganization(organization.getId()));
 		return organization;
@@ -54,7 +56,7 @@ public class OrganizationController {
 	
 	@Get("/{id}/with-departments-and-employees")
 	public Organization findByIdWithDepartmentsAndEmployees(Long id) {
-		LOGGER.info("Organization find: id={}", id);
+		LOGGER.info("Organization find with departments and employees: id={}", id);
 		Organization organization = repository.findById(id);
 		organization.setDepartments(departmentClient.findByOrganizationWithEmployees(organization.getId()));
 		return organization;
@@ -62,7 +64,7 @@ public class OrganizationController {
 	
 	@Get("/{id}/with-employees")
 	public Organization findByIdWithEmployees(Long id) {
-		LOGGER.info("Organization find: id={}", id);
+		LOGGER.info("Organization find with employees: id={}", id);
 		Organization organization = repository.findById(id);
 		organization.setEmployees(employeeClient.findByOrganization(organization.getId()));
 		return organization;
