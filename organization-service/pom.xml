@@ -21,6 +21,11 @@
             <artifactId>micronaut-http-server-netty</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.micronaut.serde</groupId>
+            <artifactId>micronaut-serde-jackson</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-http-client</artifactId>
         </dependency>
@@ -38,7 +43,7 @@
         </dependency>
         <dependency>
             <groupId>io.micronaut.tracing</groupId>
-            <artifactId>micronaut-tracing-zipkin</artifactId>
+            <artifactId>micronaut-tracing-brave-http</artifactId>
         </dependency>
         <dependency>
             <groupId>io.micronaut.discovery</groupId>
