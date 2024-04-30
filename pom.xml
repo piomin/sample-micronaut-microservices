@@ -17,7 +17,7 @@
 
     <properties>
         <micronaut.version>4.4.1</micronaut.version>
-        <jdk.version>19</jdk.version>
+        <jdk.version>21</jdk.version>
         <release.version>${jdk.version}</release.version>
         <sonar.projectKey>piomin_sample-micronaut-microservices</sonar.projectKey>
         <sonar.organization>piomin</sonar.organization>
@@ -30,18 +30,6 @@
         <module>employee-service</module>
         <module>organization-service</module>
     </modules>
-
-<!--    <dependencyManagement>-->
-<!--        <dependencies>-->
-<!--            <dependency>-->
-<!--                <groupId>io.micronaut</groupId>-->
-<!--                <artifactId>micronaut-bom</artifactId>-->
-<!--                <version>${micronaut.version}</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
-<!--        </dependencies>-->
-<!--    </dependencyManagement>-->
 
     <build>
         <plugins>

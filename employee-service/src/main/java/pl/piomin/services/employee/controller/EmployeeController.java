@@ -19,8 +19,11 @@ public class EmployeeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
-    @Inject
     EmployeeRepository repository;
+
+    public EmployeeController(EmployeeRepository repository) {
+        this.repository = repository;
+    }
 
     @Post
     public Employee add(@Body Employee employee) {
