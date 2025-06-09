@@ -16,7 +16,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <micronaut.version>4.8.14</micronaut.version>
+        <micronaut.version>4.8.15</micronaut.version>
         <jdk.version>21</jdk.version>
         <release.version>${jdk.version}</release.version>
         <sonar.projectKey>piomin_sample-micronaut-microservices</sonar.projectKey>
